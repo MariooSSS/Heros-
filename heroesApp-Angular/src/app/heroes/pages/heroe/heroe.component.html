@@ -1,0 +1,56 @@
+<mat-grid-list cols="1" *ngIf="!heroe; else divHeroe">
+    <mat-grid-tile>
+        <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+</mat-grid-list>
+
+<ng-template #divHeroe>
+    <div fxLayout="row"
+         fxLayout.xs="column"
+         fxLayoutGap="30px">
+
+        <div fxFlex="50">
+            <h1>{{ heroe.superhero }} <small>- {{ heroe.alter_ego }}</small></h1>
+            <mat-divider></mat-divider>
+            <img [src]="heroe | imagen" [alt]="heroe.superhero">
+        </div>
+
+        <div fxFlex="50">
+            <h1>{{ heroe.publisher }}</h1>
+            <mat-divider></mat-divider>
+
+            <mat-list>
+                <mat-list-item>
+                    <mat-icon mat-list-icon>event</mat-icon>
+                    <div mat-line>Primera aparición</div>
+                    <div mat-line>{{ heroe.first_appearance }}</div>
+                </mat-list-item>
+                
+                <mat-list-item>
+                    <mat-icon mat-list-icon>people</mat-icon>
+                    <div mat-line>Personajes</div>
+                    <div mat-line>{{ heroe.characters }}</div>
+                </mat-list-item>
+                
+                <mat-list-item>
+                    <mat-icon mat-list-icon>business</mat-icon>
+                    <div mat-line>Editorial</div>
+                    <div mat-line>{{ heroe.publisher }}</div>
+                </mat-list-item>
+                
+                <mat-list-item>
+                    <mat-icon mat-list-icon>person</mat-icon>
+                    <div mat-line>Alter ego</div>
+                    <div mat-line>{{ heroe.alter_ego }}</div>
+                </mat-list-item>
+            </mat-list>
+
+            <button mat-button
+                    color="warn"
+                    (click)="regresar()">
+                <mat-icon>arrow_back</mat-icon>
+                Regresar
+            </button>
+        </div>
+    </div>
+</ng-template>
